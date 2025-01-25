@@ -14,6 +14,10 @@ const corsOptions = {
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
   credentials: true, // Allow cookies if needed
+ headers: {
+        "Access-Control-Allow-Origin": "https://affworldassignmentfrontend.vercel.app", // incorrect
+        "Access-Control-Allow-Credentials": true // incorrect
+    },
 };
 
 app.use(cors(corsOptions));
