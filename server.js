@@ -9,7 +9,11 @@ require('dotenv').config();
 
 const app = express();
 
-app.options('*', cors()); 
+app.use(cors({
+    origin: 'https://affworldassignmentfrontend.vercel.app', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Include cookies if needed
+}));
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
