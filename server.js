@@ -9,10 +9,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({
-  origin: '*', 
-  credentials: true,
-}));
+app.options('*', cors()); 
 app.use(express.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
