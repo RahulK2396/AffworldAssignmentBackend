@@ -12,7 +12,7 @@ const app = express();
 const corsOptions = {
   origin: ['https://affworldassignmentfrontend.vercel.app'], 
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true, // Allow cookies if needed
+  credentials: false, // Allow cookies if needed
 };
 
 app.use(cors(corsOptions));
