@@ -10,7 +10,13 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors());
- 
+ app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://affworldassignmentfrontend.vercel.app'); // Frontend URL
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allowed methods
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
+  next();
+});
+
 app.use(express.json());
 app.use(
   session({
