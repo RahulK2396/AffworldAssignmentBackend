@@ -23,9 +23,7 @@ app.use(
 app.get('/', (req, res) => {
   res.json('Hello');
 });
-app.use('/api/auth', authRoutes);
-app.use('/api/tasks', taskRoutes);
-app.use('/api/posts', postRoutes);
+
 
 mongoose
   .connect(process.env.MONGO_URI, {
@@ -35,6 +33,9 @@ mongoose
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/posts', postRoutes);
 
 
 const PORT = process.env.PORT || 5000;
