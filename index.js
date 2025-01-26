@@ -10,14 +10,9 @@ require('dotenv').config();
 const app = express();
 
 const corsOptions = {
-  origin: 'https://affworldassignmentfrontend.vercel.app', // Allow only your frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  origin: ['https://affworldassignmentfrontend.vercel.app'], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true, // Allow cookies if needed
- headers: {
-        "Access-Control-Allow-Origin": "https://affworldassignmentfrontend.vercel.app", // incorrect
-        "Access-Control-Allow-Credentials": true // incorrect
-    },
 };
 
 app.use(cors(corsOptions));
@@ -28,7 +23,10 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-app.options('*', cors(corsOptions)); 
+app.get("/",(req,res) =>{
+  res.json("Hello")
+}
+)
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
