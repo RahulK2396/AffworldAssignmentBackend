@@ -41,7 +41,9 @@ router.post('/register', async (req, res) => {
 
 router.post('/google-login', async (req, res) => {
   const { token } = req.body;
-
+  res.setHeader('Access-Control-Allow-Origin', 'https://affworldassignmentfrontend.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
   try {
    
     const ticket = await googleClient.verifyIdToken({
